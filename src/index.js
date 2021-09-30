@@ -6,8 +6,13 @@ import rootReducer from "./redux/reducers/";
 import thunk from "redux-thunk";
 import "./index.css";
 import App from "./App";
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-let store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, composeWithDevTools(
+  applyMiddleware(thunk),
+  // other store enhancers if any
+));
+
 
 ReactDOM.render(
   <Provider store={store}>
